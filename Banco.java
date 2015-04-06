@@ -1,7 +1,10 @@
 package banco;
 import javax.swing.*;
+import java.util.Date;
 public class Banco{
     public Banco(){
+        Date t = new Date();
+        JOptionPane.showMessageDialog(null, "La fecha es: " + t);
         long ced = Long.parseLong(JOptionPane.showInputDialog("De la cedula"));
         String nom = JOptionPane.showInputDialog("De el nombre");
         CuentaAhorros ref;
