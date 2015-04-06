@@ -5,7 +5,11 @@ public class Banco{
     public double leerValor(String mensaje){
         while(true){
             try{
-                return Double.parseDouble(JOptionPane.showInputDialog(mensaje));
+                String auxiliar = JOptionPane.showInputDialog(mensaje);
+                if(auxiliar == null || auxiliar.trim().equals("")){
+                    System.exit(0);
+                }
+                return Double.parseDouble(auxiliar);
             }
             catch(NumberFormatException e){
             
@@ -15,17 +19,24 @@ public class Banco{
     public Banco(){
         Date t = new Date();
         JOptionPane.showMessageDialog(null, "La fecha es: " + t);
+         String nom = JOptionPane.showInputDialog("De el nombre");
+         if(nom == null || nom.trim().equals("")){
+             System.exit(0);
+         }
         long ced;
         while(true){
             try{
-                ced = Long.parseLong(JOptionPane.showInputDialog("De la cedula"));
+                String auxiliar = JOptionPane.showInputDialog("Numero de cedula de " + nom);
+                if(auxiliar == null || auxiliar.trim().equals("")){
+                    System.exit(0);
+                }
+                ced = Long.parseLong(auxiliar);
                 break;
             }
             catch(NumberFormatException e){
                 JOptionPane.showMessageDialog(null, "Valor incorrecto");
             }
-        }
-        String nom = JOptionPane.showInputDialog("De el nombre");
+        }       
         CuentaAhorros ref;
         if(JOptionPane.showConfirmDialog(null, "Abre cuenta con valor?") == 0){
             while(true){
